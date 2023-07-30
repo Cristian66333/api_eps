@@ -8,7 +8,10 @@ app.set('PORT',process.env.PORT || 3000)
 
 app.use(express.json())
 
-app.use('/authors', require('./routes/authors'))
+app.use('/doctors', require('./routes/doctors'))
+app.use('/offices', require('./routes/offices'))
+app.use('/assigments', require('./routes/assigments'))
+app.use('/specialities', require('./routes/specialities'))
 
 
 
