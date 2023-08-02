@@ -3,8 +3,10 @@ const express = require('express')
 require('./drivers/connect-db')
 
 const app = express()
+const cors = require('cors')
 
 app.set('PORT',process.env.PORT || 3000)
+app.use(cors())
 
 app.use(express.json())
 
