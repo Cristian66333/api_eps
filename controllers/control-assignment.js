@@ -33,9 +33,13 @@ module.exports = {
             assignment.documentDoctorId = id_doctor
 
             const office = await Office.findById(id_office)
-            if(!office.assignments.find(n=>{
-                return n.date == assignment.date && n.inicio == assignment.inicio && n.fin == assignment.fin
-            })){
+            const flag = false
+            office.assignments.find(n=>{
+                if( n.date == assignment.date && n.inicio == assignment.inicio && n.fin == assignment.fin){
+                    flag = true
+                }
+            })
+            if(!flag){
                 office.assignments.push(assignment)
 
                 await office.save()
