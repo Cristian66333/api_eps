@@ -33,12 +33,9 @@ module.exports = {
             assignment.documentDoctorId = id_doctor
 
             const office = await Office.findById(id_office)
-            const flag = false
-            office.assignments.find(n=>{
-                if( n.date == assignment.date && n.inicio == assignment.inicio && n.fin == assignment.fin){
-                    flag = true
-                }
-            })
+            const flag = office.assignments.filter(n=>
+                n.date == assignment.date && n.inicio == assignment.inicio
+            )
             if(!flag){
                 office.assignments.push(assignment)
 
