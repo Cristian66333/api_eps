@@ -33,20 +33,16 @@ module.exports = {
             assignment.documentDoctorId = id_doctor
 
             const office = await Office.findById(id_office)
-            const flag = office.assignments.filter(n=>
-                n.date == assignment.date && n.inicio == assignment.inicio
-            )
-            if(!flag){
-                office.assignments.push(assignment)
 
-                await office.save()
-    
-                const data = await assignment.save()
-    
-                return res.status(200).json({"state":true, "data":data})
-            }else{
-                return res.status(500).json({"state":false, "data":"Ya existe una reservación"})
-            }
+            office.assignments.push(assignment)
+
+            await office.save()
+
+            const data = await assignment.save()
+
+            return res.status(200).json({"state":true, "data":data})
+                
+            
 
 
             
