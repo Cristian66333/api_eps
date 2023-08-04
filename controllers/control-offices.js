@@ -1,6 +1,9 @@
+// Importación de los esquemas necesarios
 const Office = require('./../models/Office')
 const Doctor = require('./../models/Doctor')
+
 module.exports = {
+    // Función para obtener todas las asignaciones
     index : async (req,res) =>{
 
         try{
@@ -12,6 +15,7 @@ module.exports = {
         }
 
     },
+    // Función para obtener una asignación por su ID
     findById : async (req,res) => {
         const {id} = req.params
         try {
@@ -21,6 +25,7 @@ module.exports = {
             return res.status(503).json({"state":false, "error":error})
         }
     },
+    // Función para guardar una nueva asignación
     save : async (req,res) =>{
         try {
             const office = new Office(req.body)

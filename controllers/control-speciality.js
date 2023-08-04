@@ -1,5 +1,8 @@
+// Importación de los esquemas necesarios
 const Speciality = require('./../models/Speciality')
+
 module.exports = {
+    // Función para obtener todas las asignaciones
     index : async (req,res) =>{
         try{
             const data = await Speciality.find({})
@@ -10,6 +13,7 @@ module.exports = {
         }
 
     },
+    // Función para obtener una asignación por su ID
     findByID : async(req,res)=>{
         const {id} = req.params
         try {
@@ -21,6 +25,7 @@ module.exports = {
         }
         
     },
+    // Función para guardar una nueva asignación
     save : async(req,res)=>{
         const speciality = new Speciality(req.body)
 
@@ -32,6 +37,7 @@ module.exports = {
         }
 
     },
+    // Función para actualizar una asignación existente
     update : async(req,res)=>{
         const {id} = req.params
 
@@ -46,6 +52,7 @@ module.exports = {
         }
 
     },
+    // Función para eliminar una asignación existente
     erase : async(req,res)=>{
         const {id} = req.params
 

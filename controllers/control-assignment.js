@@ -1,7 +1,10 @@
+// Importación de los esquemas necesarios
 const Assignment = require('./../models/Assignment')
 const Doctor = require('./../models/Doctor')
 const Office = require('./../models/Office')
+
 module.exports = {
+    // Función para obtener todas las asignaciones
     index : async (req,res) =>{
         try{
             const data = await Assignment.find({}).populate('documentDoctorId')
@@ -12,6 +15,7 @@ module.exports = {
         }
 
     },
+    // Función para obtener una asignación por su ID
     findByID : async(req,res)=>{
         const {id} = req.params
         try {
@@ -23,6 +27,7 @@ module.exports = {
         }
         
     },
+    // Función para guardar una nueva asignación
     save : async(req,res)=>{
         const {id_doctor} = req.params
         const {id_office} = req.params
@@ -41,16 +46,13 @@ module.exports = {
             const data = await assignment.save()
 
             return res.status(200).json({"state":true, "data":data})
-                
-            
 
-
-            
         } catch (error) {
             return res.status(500).json({"state":false, "data":error})
         }
 
     },
+    // Función para actualizar una asignación existente
     update : async(req,res)=>{
         const {id} = req.params
 
@@ -65,6 +67,7 @@ module.exports = {
         }
 
     },
+    // Función para eliminar una asignación existente
     erase : async(req,res)=>{
         const {id} = req.params
 

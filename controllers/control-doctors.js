@@ -1,6 +1,8 @@
+// Importación de los esquemas necesarios
 const Doctor = require('./../models/Doctor')
 
 module.exports = {
+    // Función para obtener todas las asignaciones
     index : async (req,res) =>{
         try{
             const data = await Doctor.find({}).populate('speciality')
@@ -11,6 +13,7 @@ module.exports = {
         }
 
     },
+    // Función para obtener una asignación por su ID
     findByID : async(req,res)=>{
         const {id} = req.params
         try {
@@ -22,6 +25,7 @@ module.exports = {
         }
         
     },
+    // Función para guardar una nueva asignación
     save : async(req,res)=>{
         const doctor = new Doctor(req.body)
         try {
@@ -32,6 +36,7 @@ module.exports = {
         }
 
     },
+    // Función para actualizar una asignación existente
     update : async(req,res)=>{
 
         const {id} = req.params
@@ -48,6 +53,7 @@ module.exports = {
         }
 
     },
+    // Función para eliminar una asignación existente
     erase : async(req,res)=>{
         const {id} = req.params
 
